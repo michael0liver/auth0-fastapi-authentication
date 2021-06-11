@@ -1,0 +1,18 @@
+#!/bin/sh -e
+
+POETRY_NOT_FOUND_MESSAGE=$(
+    cat <<-END
+poetry executable could not be found, please check you have it installed and your PATH is configured correctly.
+Installation instructions can be found at: https://github.com/python-poetry/poetry
+END
+)
+
+# Check if `poetry` executable is available
+if ! command -v poetry &>/dev/null; then
+    echo "${POETRY_NOT_FOUND_MESSAGE}"
+    exit 1
+fi
+
+set -x
+
+poetry install

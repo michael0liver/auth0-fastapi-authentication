@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+set -x
+
+poetry run uvicorn app.application:app --host localhost --reload
